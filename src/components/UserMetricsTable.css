@@ -1,0 +1,86 @@
+.table-container {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.table-header {
+  margin-bottom: 20px;
+}
+
+.table-header h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.metrics-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.metrics-table thead {
+  background: #f8fafc;
+}
+
+.metrics-table th {
+  padding: 16px;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.metrics-table th:hover {
+  background: #e2e8f0;
+}
+
+.metrics-table tbody tr {
+  border-bottom: 1px solid #e2e8f0;
+  transition: background 0.2s;
+}
+
+.metrics-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.metrics-table td {
+  padding: 16px;
+  font-size: 14px;
+  color: #1e293b;
+}
+
+.region-cell {
+  font-weight: 600;
+  color: #334155;
+}
+
+.churn-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.churn-badge.low {
+  background: #d1fae5;
+  color: #10b981;
+}
+
+.churn-badge.high {
+  background: #fee2e2;
+  color: #ef4444;
+}
+

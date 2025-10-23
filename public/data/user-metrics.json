@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "region": "North America",
+    "activeUsers": 15420,
+    "newUsers": 3240,
+    "churnRate": 2.3,
+    "avgSessionTime": 8.5
+  },
+  {
+    "id": 2,
+    "region": "Europe",
+    "activeUsers": 12800,
+    "newUsers": 2890,
+    "churnRate": 1.9,
+    "avgSessionTime": 7.2
+  },
+  {
+    "id": 3,
+    "region": "Asia Pacific",
+    "activeUsers": 21500,
+    "newUsers": 5120,
+    "churnRate": 3.1,
+    "avgSessionTime": 6.8
+  },
+  {
+    "id": 4,
+    "region": "Latin America",
+    "activeUsers": 8900,
+    "newUsers": 1780,
+    "churnRate": 2.7,
+    "avgSessionTime": 7.9
+  },
+  {
+    "id": 5,
+    "region": "Middle East & Africa",
+    "activeUsers": 6200,
+    "newUsers": 1340,
+    "churnRate": 3.5,
+    "avgSessionTime": 6.3
+  }
+]
+

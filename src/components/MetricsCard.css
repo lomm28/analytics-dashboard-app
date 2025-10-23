@@ -1,0 +1,58 @@
+.metrics-card {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.metrics-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.metrics-card__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.metrics-card__value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.metrics-card__subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 12px;
+}
+
+.metrics-card__trend {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.metrics-card__trend.positive {
+  color: #10b981;
+  background: #d1fae5;
+}
+
+.metrics-card__trend.negative {
+  color: #ef4444;
+  background: #fee2e2;
+}
+
+.metrics-card__trend.neutral {
+  color: #64748b;
+  background: #f1f5f9;
+}
+

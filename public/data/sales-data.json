@@ -1,0 +1,45 @@
+[
+  {
+    "month": "Jan",
+    "revenue": 12500,
+    "expenses": 8200,
+    "profit": 4300,
+    "customers": 145
+  },
+  {
+    "month": "Feb",
+    "revenue": 15800,
+    "expenses": 9100,
+    "profit": 6700,
+    "customers": 178
+  },
+  {
+    "month": "Mar",
+    "revenue": 18200,
+    "expenses": 9800,
+    "profit": 8400,
+    "customers": 203
+  },
+  {
+    "month": "Apr",
+    "revenue": 21500,
+    "expenses": 11200,
+    "profit": 10300,
+    "customers": 234
+  },
+  {
+    "month": "May",
+    "revenue": 24300,
+    "expenses": 12500,
+    "profit": 11800,
+    "customers": 267
+  },
+  {
+    "month": "Jun",
+    "revenue": 27800,
+    "expenses": 13100,
+    "profit": 14700,
+    "customers": 298
+  }
+]
+

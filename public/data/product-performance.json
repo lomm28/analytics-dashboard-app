@@ -1,0 +1,28 @@
+[
+  {
+    "product": "Product A",
+    "sales": 4200,
+    "growth": 15.3
+  },
+  {
+    "product": "Product B",
+    "sales": 3800,
+    "growth": 8.7
+  },
+  {
+    "product": "Product C",
+    "sales": 5100,
+    "growth": 22.1
+  },
+  {
+    "product": "Product D",
+    "sales": 2900,
+    "growth": -3.2
+  },
+  {
+    "product": "Product E",
+    "sales": 3500,
+    "growth": 12.5
+  }
+]
+
