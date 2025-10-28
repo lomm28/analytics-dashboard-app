@@ -66,6 +66,42 @@ npm run dev
 
 The application will open automatically at `http://localhost:3000`
 
+## Backend (FastAPI + PostgreSQL)
+
+This repository now includes a small FastAPI backend that serves the same datasets from a PostgreSQL database. The frontend has been updated to fetch data from `/api/*` endpoints instead of the static JSON files.
+
+Quick local steps:
+
+1. Install Python deps for the backend:
+
+```bash
+python -m pip install -r server/requirements.txt
+```
+
+2. Start a local PostgreSQL and set `DATABASE_URL`, for example:
+
+```bash
+# Example: run postgres with Docker
+docker run --name analytics-pg -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=analytics -p 5432:5432 -d postgres:15
+
+export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/analytics
+```
+
+3. Seed the database (reads the JSON files once to populate DB tables if empty):
+
+```bash
+python server/app/seed.py
+```
+
+4. Start the backend (from project root):
+
+```bash
+npm run start:server
+```
+
+The frontend development server is configured to proxy `/api` requests to `http://localhost:8000` so you can run the frontend (`npm run dev`) and backend concurrently.
+
+
 #### Production Build
 
 Build the application for production:

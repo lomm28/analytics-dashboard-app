@@ -1,0 +1,30 @@
+# FROM node:lts-slim
+
+# WORKDIR /app
+
+# COPY package*.json ./
+# COPY vite.config.js ./
+# COPY index.html ./
+# COPY src ./src
+# COPY public ./public
+
+# RUN npm install
+
+# EXPOSE 3000
+
+# CMD ["npm", "run", "dev"]
+
+FROM node:lts-slim
+
+# Set working directory
+WORKDIR /app
+
+COPY package.json /app/package.json
+COPY package-lock.json /app/package-lock.json
+
+# Same as npm install
+RUN npm install
+
+COPY . /app
+
+CMD [ "npm", "run", "dev" ]

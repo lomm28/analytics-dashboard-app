@@ -11,13 +11,13 @@ const Dashboard = () => {
 
   useEffect(() => {
     // Load sales data for summary metrics
-    fetch('/data/sales-data.json')
+    fetch('/api/sales')
       .then(response => response.json())
       .then(data => setSalesData(data))
       .catch(error => console.error('Error loading sales data:', error));
 
     // Load user metrics for summary
-    fetch('/data/user-metrics.json')
+    fetch('/api/users')
       .then(response => response.json())
       .then(data => setUserMetrics(data))
       .catch(error => console.error('Error loading user metrics:', error));

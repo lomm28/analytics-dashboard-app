@@ -10,6 +10,11 @@ export default defineConfig({
     watch: {
       usePolling: true // Enable polling for file changes in Docker
     }
+    ,
+    proxy: {
+      // Proxy API requests during development to the FastAPI backend
+      '/api': 'http://dashboard-backend-service:8000'
+    }
   },
   build: {
     outDir: 'dist',

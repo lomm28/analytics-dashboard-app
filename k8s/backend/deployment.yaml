@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-backend-app
+  labels:
+    app: dashboard-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard-backend
+  template:
+    metadata:
+      labels:
+        app: dashboard-backend
+    spec:
+      containers:
+        - name: dashboard-backend-app
+          image: pratikkhan79/dashboard-fastapi-backend:dev
+          ports:
+            - containerPort: 8000
+          # workingDir: /app
+          env:
+            - name: DATABASE_URL
+              valueFrom: 
+                secretKeyRef:
+                  name: postgres-secret
+                  key: postgres-db-url
+            - name: FRONTEND_ORIGIN
+              valueFrom: 
+                configMapKeyRef:
+                  name: dashboard-app-configmap
+                  key: frontend_origin
+      restartPolicy: Always

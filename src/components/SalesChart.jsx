@@ -18,7 +18,7 @@ const SalesChart = () => {
   const [chartType, setChartType] = useState('line');
 
   useEffect(() => {
-    fetch('/data/sales-data.json')
+    fetch('/api/sales')
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .catch(error => console.error('Error loading sales data:', error));

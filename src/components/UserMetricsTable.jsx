@@ -6,7 +6,7 @@ const UserMetricsTable = () => {
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
 
   useEffect(() => {
-    fetch('/data/user-metrics.json')
+    fetch('/api/users')
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .catch(error => console.error('Error loading user metrics:', error));

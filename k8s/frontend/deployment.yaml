@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard-frontend-app
+  labels:
+    app: dashboard-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard-frontend
+  template:
+    metadata:
+      labels:
+        app: dashboard-frontend
+    spec:
+      containers:
+        - name: dashboard-frontend-app
+          image: pratikkhan79/dashboard-react-frontend:dev
+          ports:
+            - containerPort: 3000
+          env:
+            - name: CHOKIDAR_USEPOLLING
+              value: "true"

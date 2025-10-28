@@ -15,7 +15,7 @@ const ProductChart = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch('/data/product-performance.json')
+    fetch('/api/products')
       .then(response => response.json())
       .then(jsonData => setData(jsonData))
       .catch(error => console.error('Error loading product data:', error));
