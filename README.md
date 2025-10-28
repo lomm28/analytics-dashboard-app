@@ -68,29 +68,31 @@ The application will open automatically at `http://localhost:3000`
 
 ## Backend (FastAPI + PostgreSQL)
 
-This repository now includes a small FastAPI backend that serves the same datasets from a PostgreSQL database. The frontend has been updated to fetch data from `/api/*` endpoints instead of the static JSON files.
+This repository includes a FastAPI backend that serves the datasets from a PostgreSQL database. The frontend fetches data from `/api/*` endpoints.
 
-Quick local steps:
+Local development (recommended)
 
-1. Install Python deps for the backend:
+1. Install Python dependencies for the backend:
 
 ```bash
-python -m pip install -r server/requirements.txt
+uv venv # create virt environment
+uv sync # add dependencies
 ```
 
-2. Start a local PostgreSQL and set `DATABASE_URL`, for example:
+2. Start a local PostgreSQL and set `DATABASE_URL` (example using Docker):
 
 ```bash
-# Example: run postgres with Docker
+# Run postgres locally
 docker run --name analytics-pg -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=analytics -p 5432:5432 -d postgres:15
 
+# Export a DATABASE_URL for the backend
 export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/analytics
 ```
 
-3. Seed the database (reads the JSON files once to populate DB tables if empty):
+3. Seed the database (optional; seeds only if tables empty):
 
 ```bash
-python server/app/seed.py
+uv run dapp/seed.py
 ```
 
 4. Start the backend (from project root):
@@ -99,8 +101,39 @@ python server/app/seed.py
 npm run start:server
 ```
 
-The frontend development server is configured to proxy `/api` requests to `http://localhost:8000` so you can run the frontend (`npm run dev`) and backend concurrently.
+Notes for Kubernetes / Minikube
 
+- Important: when building the backend Docker image for deployment, make sure the build context is the `server/` directory so `COPY . /app` in `server/Dockerfile` produces the expected layout. Two valid commands:
+
+```bash
+# build from inside the server directory (recommended)
+cd server
+docker build -t dashboard-fastapi-backend:latest .
+
+# or from the repo root, pass the server directory as the context
+docker build -t dashboard-fastapi-backend:latest -f server/Dockerfile server
+```
+
+- If you use Minikube, load the image into the cluster (no need to push):
+
+```bash
+minikube image load dashboard-fastapi-backend:latest
+kubectl rollout restart deployment/dashboard-backend-app
+kubectl rollout status deployment/dashboard-backend-app
+kubectl logs -l app=dashboard-backend -c dashboard-backend-app --follow
+```
+
+- Alternatively, push to your registry and update the deployment image.
+
+DB readiness and startup ordering
+
+- The backend may attempt to connect to Postgres on startup. In Kubernetes that can race with the database pod becoming ready. Two recommended approaches to avoid crashloops:
+	- add a small startup retry in the app (run DB migrations / Base.metadata.create_all inside a startup event with retries), and/or
+	- add an initContainer in the backend Deployment that waits for `postgres:5432` to be reachable before starting the main container.
+
+Proxy configuration
+
+- During local frontend development Vite proxies `/api` to the backend service. When running in-cluster the proxy target used in `vite.config.js` was updated to `http://dashboard-backend-service:8000` to match the Kubernetes Service name.
 
 #### Production Build
 
